@@ -1,0 +1,15 @@
+{
+  "name": "node-bing-api",
+  "version": "0.0.1",
+  "description": "Node.js module for the Azure Bing Search API",
+  "main": "index.js",
+  "author": "Mr. Goferito",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/goferito/node-bing-api"
+  },
+  "dependencies": {
+    "request": "^2.44.0",
+    "underscore": "^1.6.0"
+  }
+}

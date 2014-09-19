@@ -12,7 +12,7 @@ var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 
 Bing.search("Android", function(error, res, body){
   console.log(body);
-}));
+});
 ````
 
 ### License

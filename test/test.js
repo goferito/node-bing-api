@@ -70,4 +70,18 @@ describe('Bing', function() {
             done();
         });
     });
+
+    it('should cope with errors', function(done) {
+        // No actual data on what the failure looks like.
+        var failure = { message: 'Failed request' };
+        app.get('/hello/Image', function (req, res) {
+           res.status(500).send(JSON.stringify(failure));
+        });
+        var bingClient = bing({ rootUri: 'http://localhost:'+port+'/hello/', accKey: '123' });
+        bingClient.images('xbox', function (error, response, body) {
+            response.statusCode.should.eql(500);
+            body.should.eql(failure);
+            done();
+        });
+    });
 });

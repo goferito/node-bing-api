@@ -32,6 +32,15 @@ Bing.images("Ninja Turtles", function(error, res, body){
 }, {skip: 50});
 ```
 
+##### Specify Market
+Getting spanish results:
+```js
+Bing.images("Ninja Turtles", function(error, res, body){
+  console.log(body);
+}, {top: 5, market: 'es-ES'});
+```
+
+
 ### License
 MIT
 

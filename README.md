@@ -31,6 +31,12 @@ Bing.images("Ninja Turtles", function(error, res, body){
   console.log(body);
 }, {skip: 50});
 ```
+Adding filter(s) for the Image Search
+```js
+Bing.images("Ninja Turtles", function(error, res, body){
+  console.log(body);
+}, {imagefilters: 'Size:Small+Color:Monochrome'});
+```
 
 ##### Specify Market
 Getting spanish results:

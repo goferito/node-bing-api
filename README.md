@@ -45,6 +45,7 @@ Bing.images("Ninja Turtles", function(error, res, body){
   console.log(body);
 }, {top: 5, market: 'es-ES'});
 ```
+[List of Bing Markets](https://msdn.microsoft.com/en-us/library/dd251064.aspx)
 
 
 ### License

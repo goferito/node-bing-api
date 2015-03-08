@@ -48,6 +48,18 @@ Bing.images("Ninja Turtles", function(error, res, body){
 [List of Bing Markets](https://msdn.microsoft.com/en-us/library/dd251064.aspx)
 
 
+##### Adult Filter
+```js
+Bing.images('Kim Kardashian', function(error, res, body){
+  console.log(body.d.results);
+}, { market: 'en-US', adult: 'Strict'});
+```
+Accepted values: "Off", "Moderate", "Strict".
+
+*Moderate level should not include results with sexually explicit images
+or videos, but may include sexually explicit text*
+
+
 ### License
 MIT
 

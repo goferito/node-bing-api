@@ -37,6 +37,15 @@ Bing.images("Ninja Turtles", function(error, res, body){
   console.log(body);
 }, {imagefilters: 'Size:Small+Color:Monochrome'});
 ```
+Accepted filter values:
+* Size:\<Small | Medium | Large\>
+* Size:Height:\<*Height*\>
+* Size:Width:\<*Width*\>
+* Aspect:\<Square | Wide | Tall\>
+* Color:\<Color | Monochrome\>
+* Style:\<Photo | Graphics\>
+* Face:\<Face | Portrait | Other\>
+
 
 ##### Specify Market
 Getting spanish results:

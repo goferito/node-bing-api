@@ -16,7 +16,7 @@ var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 
 ##### Web Search:
 ```js
-Bing.search("Pizza", function(error, res, body){
+Bing.web("Pizza", function(error, res, body){
     console.log(body);
   },
   {

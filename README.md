@@ -1,12 +1,12 @@
 # Node Bing API
 Node.js lib for the Azure Bing Web Search API
 
-### Installation
+## Installation
 ````
 npm install node-bing-api
 ````
 
-### Usage
+## Usage
 
 Require the library and initialialize it with your account key:
 
@@ -14,7 +14,7 @@ Require the library and initialialize it with your account key:
 var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 ```
 
-##### Web Search:
+#### Web Search:
 ```js
 Bing.web("Pizza", function(error, res, body){
     console.log(body);
@@ -25,7 +25,7 @@ Bing.web("Pizza", function(error, res, body){
   });
 ```
 
-##### Images Search:
+#### Images Search:
 ```js
 Bing.images("Ninja Turtles", function(error, res, body){
   console.log(body);
@@ -47,7 +47,7 @@ Accepted filter values:
 * Face:\<Face | Portrait | Other\>
 
 
-##### Specify Market
+#### Specify Market
 Getting spanish results:
 ```js
 Bing.images("Ninja Turtles", function(error, res, body){
@@ -57,7 +57,7 @@ Bing.images("Ninja Turtles", function(error, res, body){
 [List of Bing Markets](https://msdn.microsoft.com/en-us/library/dd251064.aspx)
 
 
-##### Adult Filter
+#### Adult Filter
 ```js
 Bing.images('Kim Kardashian', function(error, res, body){
   console.log(body.d.results);
@@ -69,6 +69,6 @@ Accepted values: "Off", "Moderate", "Strict".
 or videos, but may include sexually explicit text.*
 
 
-### License
+## License
 MIT
 

@@ -57,7 +57,7 @@ Bing.images('Kim Kardashian', function(error, res, body){
 Accepted values: "Off", "Moderate", "Strict".
 
 *Moderate level should not include results with sexually explicit images
-or videos, but may include sexually explicit text*
+or videos, but may include sexually explicit text.*
 
 
 ### License

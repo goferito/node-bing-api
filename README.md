@@ -55,19 +55,19 @@ Accepted filter values:
 
 #### News Search:
 ```js
-Bing.images("Ninja Turtles", function(error, res, body){
+Bing.news("Marvel Movies", function(error, res, body){
   console.log(body);
 }, {skip: 50});
 ```
 Adding more news specific options
 ```js
-Bing.images("Ninja Turtles", function(error, res, body){
+Bing.news("Football", function(error, res, body){
   console.log(body);
   }, 
   {
     newsCategory: 'sports',
-    newsLocationOverride: 'US.WA',
-    newsSortBy: 'Date'
+    newsLocationOverride: 'US.NY',
+    newsSortBy: 'date'
   }
 );
 ```
@@ -81,11 +81,13 @@ Accepted news categories:
 * world
 * scienceAndTechnology
 
-News location override only applies on the en-US market.
+News location override option only applies on the en-US market.
 
 Accepted news sorting:
-* Date
-* Relevance
+* date
+* relevance
+
+All news specific options are optional
 
 #### Specify Market
 Getting spanish results:

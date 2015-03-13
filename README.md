@@ -35,7 +35,13 @@ Adding filter(s) for the Image Search
 ```js
 Bing.images("Ninja Turtles", function(error, res, body){
   console.log(body);
-}, {imagefilters: 'Size:Small+Color:Monochrome'});
+  }, 
+  {
+    imagefilters: {
+      size: 'small',
+      color: 'monochrome' 
+    }
+  });
 ```
 Accepted filter values:
 * Size:\<Small | Medium | Large\>

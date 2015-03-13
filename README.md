@@ -41,7 +41,8 @@ Bing.images("Ninja Turtles", function(error, res, body){
       size: 'small',
       color: 'monochrome' 
     }
-  });
+  }
+);
 ```
 Accepted filter values:
 * Size:\<Small | Medium | Large\>
@@ -52,6 +53,39 @@ Accepted filter values:
 * Style:\<Photo | Graphics\>
 * Face:\<Face | Portrait | Other\>
 
+#### News Search:
+```js
+Bing.images("Ninja Turtles", function(error, res, body){
+  console.log(body);
+}, {skip: 50});
+```
+Adding more news specific options
+```js
+Bing.images("Ninja Turtles", function(error, res, body){
+  console.log(body);
+  }, 
+  {
+    newsCategory: 'sports',
+    newsLocationOverride: 'US.WA',
+    newsSortBy: 'Date'
+  }
+);
+```
+Accepted news categories:
+* business
+* entertainment
+* health
+* politics
+* sports
+* US
+* world
+* scienceAndTechnology
+
+News location override only applies on the en-US market.
+
+Accepted news sorting:
+* Date
+* Relevance
 
 #### Specify Market
 Getting spanish results:

@@ -22,6 +22,17 @@ Bing.web("Pizza", function(error, res, body){
   {
     top: 10,  // Number of results (max 50)
     skip: 3,   // Skip first 3 results
+  });
+```
+
+#### Composite Search:
+```js
+Bing.composite("xbox", function(error, res, body){
+    console.log(body);
+  },
+  {
+    top: 10,  // Number of results (max 50)
+    skip: 3,   // Skip first 3 results
     sources: "web+news", //Choises are web+image+video+news+spell
     newssortby: "Date" //Choices are Date, Relevance
   });

@@ -65,9 +65,11 @@ Bing.news("Football", function(error, res, body){
   console.log(body);
   }, 
   {
-    newsCategory: 'sports',
-    newsLocationOverride: 'US.NY',
-    newsSortBy: 'date'
+    newsfilters: {
+      category: 'sports',
+      locationOverride: 'US.NY',
+      sortBy: 'date'
+    }
   }
 );
 ```

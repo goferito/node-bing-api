@@ -6,15 +6,15 @@
 try{
   var accKey = require('./secrets').accKey;
 }
-catch(e){ console.log(e) }
+catch(e){ console.log(e); }
 
 if(!accKey){
   return console.error("Need to include an access key in your secrets.js");
-} 
+}
 
 
-var Bing = require('../')({ accKey: accKey})
-  , should = require('should')
+var Bing = require('../')({ accKey: accKey});
+var should = require('should');
 
 
 describe("Bing Search", function(){
@@ -23,7 +23,7 @@ describe("Bing Search", function(){
 
   it('works without options', function(done){
 
-    Bing.search('nigger vs chink', function(err, res, body){
+    Bing.search('monkey vs frog', function(err, res, body){
 
       should.not.exist(err);
       should.exist(res);
@@ -37,8 +37,11 @@ describe("Bing Search", function(){
   });
 
   it('finds only 5 results', function(done){
-    Bing.search('nigger vs chink', function(err, res, body){
-
+    Bing.search('monkey vs frog', {
+          top: 5,
+          market: 'en-US',
+          adult: 'Strict'
+    }, function(err, res, body){
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
@@ -46,14 +49,9 @@ describe("Bing Search", function(){
       body.d.results.should.have.length(5);
 
       done();
-    },
-    {
-      top: 5,
-      market: 'en-US',
-      adult: 'Strict'
     });
   });
-  
+
 });
 
 
@@ -62,9 +60,11 @@ describe("Bing Images", function(){
   this.timeout(1000 * 10);
 
   it('finds images with specific options', function(done){
-    Bing.images('pizza',
-                function(err, res, body){
-
+    Bing.images('pizza', {
+          top: 3,
+          adult: 'Off',
+          imagefilters: { size: 'small', color: 'monochrome' }
+    }, function(err, res, body){
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
@@ -72,14 +72,9 @@ describe("Bing Images", function(){
       body.d.results.should.have.length(3);
 
       done();
-    },
-    {
-      top: 3,
-      adult: 'Off',
-      imagefilters: { size: 'small', color: 'monochrome' }
     });
   });
-    
+
 });
 
 
@@ -89,7 +84,11 @@ describe("Bing News", function(){
 
   it('finds news with specific options', function(done){
 
-    Bing.news('ps4', function(err, res, body){
+    Bing.news('ps4', {
+          top: 10,
+          skip: 1,
+          newsortby: 'Date'
+    }, function(err, res, body){
       //TODO try unaccepted options like imagefilters
 
       should.not.exist(err);
@@ -99,14 +98,9 @@ describe("Bing News", function(){
       body.d.results.should.have.length(10);
 
       done();
-    },
-    {
-      top: 10,
-      skip: 1,
-      newsortby: 'Date'
     });
   });
-    
+
 });
 
 
@@ -116,8 +110,9 @@ describe("Bing Video", function(){
 
   it('finds videos with specific options', function(done){
 
-    Bing.video('monkey vs frog', function(err, res, body){
-
+    Bing.video('monkey vs frog', {
+          top: 10
+    }, function(err, res, body){
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
@@ -127,11 +122,7 @@ describe("Bing Video", function(){
       //TODO try here unaccepted options like imagefilters
 
       done();
-    },
-    {
-      top: 10
     });
   });
-    
-});
 
+});

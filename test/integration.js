@@ -1,128 +1,133 @@
-
 // Try to get an access key to run all this test.
 // If the file doesn't exist or it doesn't contain an access key, it
 // should still run the basic tests; thus throwing an exception must
 // be avoided.
-try{
-  var accKey = require('./secrets').accKey;
-}
-catch(e){ console.log(e); }
-
-if(!accKey){
-  return console.error("Need to include an access key in your secrets.js");
+try {
+    var accKey = require('./secrets').accKey;
+} catch (e) {
+    console.log(e);
 }
 
+if (!accKey) {
+    return console.error("Need to include an access key in your secrets.js");
+}
 
-var Bing = require('../')({ accKey: accKey});
+
+var Bing = require('../')({
+    accKey: accKey
+});
 var should = require('should');
 
 
-describe("Bing Search", function(){
+describe("Bing Search", function () {
 
-  this.timeout(1000 * 10);
+    this.timeout(1000 * 10);
 
-  it('works without options', function(done){
+    it('works without options', function (done) {
 
-    Bing.search('monkey vs frog', function(err, res, body){
+        Bing.search('monkey vs frog', function (err, res, body) {
 
-      should.not.exist(err);
-      should.exist(res);
-      should.exist(body);
+            should.not.exist(err);
+            should.exist(res);
+            should.exist(body);
 
-      body.d.results.should.have.length(50);
+            body.d.results.should.have.length(50);
 
-      //TODO check it contains the right fields
-      done();
+            //TODO check it contains the right fields
+            done();
+        });
     });
-  });
 
-  it('finds only 5 results', function(done){
-    Bing.search('monkey vs frog', {
-          top: 5,
-          market: 'en-US',
-          adult: 'Strict'
-    }, function(err, res, body){
-      should.not.exist(err);
-      should.exist(res);
-      should.exist(body);
+    it('finds only 5 results', function (done) {
+        Bing.search('monkey vs frog', {
+            top: 5,
+            market: 'en-US',
+            adult: 'Strict'
+        }, function (err, res, body) {
+            should.not.exist(err);
+            should.exist(res);
+            should.exist(body);
 
-      body.d.results.should.have.length(5);
+            body.d.results.should.have.length(5);
 
-      done();
+            done();
+        });
     });
-  });
 
 });
 
 
-describe("Bing Images", function(){
+describe("Bing Images", function () {
 
-  this.timeout(1000 * 10);
+    this.timeout(1000 * 10);
 
-  it('finds images with specific options', function(done){
-    Bing.images('pizza', {
-          top: 3,
-          adult: 'Off',
-          imagefilters: { size: 'small', color: 'monochrome' }
-    }, function(err, res, body){
-      should.not.exist(err);
-      should.exist(res);
-      should.exist(body);
+    it('finds images with specific options', function (done) {
+        Bing.images('pizza', {
+            top: 3,
+            adult: 'Off',
+            imagefilters: {
+                size: 'small',
+                color: 'monochrome'
+            }
+        }, function (err, res, body) {
+            should.not.exist(err);
+            should.exist(res);
+            should.exist(body);
 
-      body.d.results.should.have.length(3);
+            body.d.results.should.have.length(3);
 
-      done();
+            done();
+        });
     });
-  });
 
 });
 
 
-describe("Bing News", function(){
+describe("Bing News", function () {
 
-  this.timeout(1000 * 10);
+    this.timeout(1000 * 10);
 
-  it('finds news with specific options', function(done){
+    it('finds news with specific options', function (done) {
 
-    Bing.news('ps4', {
-          top: 10,
-          skip: 1,
-          newsortby: 'Date'
-    }, function(err, res, body){
-      //TODO try unaccepted options like imagefilters
+        Bing.news('ps4', {
+            top: 10,
+            skip: 1,
+            newsortby: 'Date'
+        }, function (err, res, body) {
+            //TODO try unaccepted options like imagefilters
 
-      should.not.exist(err);
-      should.exist(res);
-      should.exist(body);
+            should.not.exist(err);
+            should.exist(res);
+            should.exist(body);
 
-      body.d.results.should.have.length(10);
+            body.d.results.should.have.length(10);
 
-      done();
+            done();
+        });
     });
-  });
 
 });
 
 
-describe("Bing Video", function(){
+describe("Bing Video", function () {
 
-  this.timeout(1000 * 10);
+    this.timeout(1000 * 10);
 
-  it('finds videos with specific options', function(done){
+    it('finds videos with specific options', function (done) {
 
-    Bing.video('monkey vs frog', {
-          top: 10
-    }, function(err, res, body){
-      should.not.exist(err);
-      should.exist(res);
-      should.exist(body);
+        Bing.video('monkey vs frog', {
+            top: 10
+        }, function (err, res, body) {
+            should.not.exist(err);
+            should.exist(res);
+            should.exist(body);
 
-      body.d.results.should.have.length(10);
+            body.d.results.should.have.length(10);
 
-      //TODO try here unaccepted options like imagefilters
+            //TODO try here unaccepted options like imagefilters
 
-      done();
+            done();
+        });
     });
-  });
 
 });

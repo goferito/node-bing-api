@@ -1,36 +1,48 @@
-module.exports = function(grunt) {
-  grunt.initConfig({
-    simplemocha: {
-      options: {
-        globals: ['should'],
-        timeout: 3000,
-        ignoreLeaks: false,
-        ui: 'bdd',
-        reporter: 'list'
-      },
-      all: { src: ['test/**/*.js'] }
-    },
+module.exports = function (grunt) {
+    grunt.initConfig({
+        simplemocha: {
+            options: {
+                globals: ['should'],
+                timeout: 3000,
+                ignoreLeaks: false,
+                ui: 'bdd',
+                reporter: 'list'
+            },
+            all: {
+                src: ['test/**/*.js']
+            }
+        },
 
-    jshint: {
-      options: {
-        laxbreak: true
-      },
-      all: [ 'Gruntfile.js', 'index.js', 'lib/**/*.js', 'test/**/*.js']
-    },
+        jsbeautifier: {
+            files: ['Gruntfile.js', 'index.js', 'lib/**/*.js', 'test/**/*.js'],
+            options: {
+                js: {
+                    jslintHappy: true
+                }
+            }
+        },
 
-    jsdoc: {
-      all: {
-        src: ['index.js', 'lib/**/*.js'],
-        dest: 'doc'
-      }
-    }
-  });
+        jshint: {
+            options: {
+                laxbreak: true
+            },
+            all: ['Gruntfile.js', 'index.js', 'lib/**/*.js', 'test/**/*.js']
+        },
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-simple-mocha');
-  grunt.loadNpmTasks('grunt-jsdoc');
+        jsdoc: {
+            all: {
+                src: ['index.js', 'lib/**/*.js'],
+                dest: 'doc'
+            }
+        }
+    });
 
-  grunt.registerTask('test', ['simplemocha:all']);
-  grunt.registerTask('build', ['jshint', 'test']);
-  grunt.registerTask('default', ['build', 'jsdoc']);
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-jsbeautifier');
+    grunt.loadNpmTasks('grunt-simple-mocha');
+    grunt.loadNpmTasks('grunt-jsdoc');
+
+    grunt.registerTask('test', ['simplemocha:all']);
+    grunt.registerTask('build', ['jsbeautifier', 'jshint', 'test']);
+    grunt.registerTask('default', ['build', 'jsdoc']);
 };

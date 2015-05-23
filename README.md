@@ -1,6 +1,10 @@
 # Node Bing API
 Node.js lib for the Azure Bing Web Search API
 
+## Changelog v2
+In order to follow JavaScript best practices and allow the library to
+be promisified, the callback function is now the last parameter.
+
 ## Installation
 ````
 npm install node-bing-api

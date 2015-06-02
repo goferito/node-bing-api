@@ -55,6 +55,26 @@ describe("Bing Search", function () {
     });
   });
 
+  it('finds ukrainian results', function(done){
+    Bing.search('"Sony Xperia Z3" огляди тест',
+                {
+                  top: 5,
+                  skip: 0,
+                  market: 'uk-UA'
+                },
+                function (err, res, body) {
+
+      should.not.exist(err);
+      should.exist(res);
+      should.exist(body);
+
+      body.d.results.should.have.length(5);
+
+      done();
+    });
+    
+  })
+
 });
 
 

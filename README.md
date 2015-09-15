@@ -45,7 +45,7 @@ Bing.composite("xbox", {
 Bing.news("xbox", {
     top: 10,  // Number of results (max 50)
     skip: 3,   // Skip first 3 results
-    newssortby: "Date" //Choices are: Date, Relevance
+    newssortby: "Date", //Choices are: Date, Relevance
     newscategory: "rt_Business" // Choices are:
                                 //   rt_Business
                                 //   rt_Entertainment

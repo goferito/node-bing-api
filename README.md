@@ -24,7 +24,11 @@ Bing.web("Pizza", {
     top: 10,  // Number of results (max 50)
     skip: 3,   // Skip first 3 results
   }, function(error, res, body){
-    console.log(body);
+
+    // body has more useful information, but for this example we are just
+    // printing the first two results
+    console.log(body.d.results[0]);
+    console.log(body.d.results[1]);
   });
 ```
 

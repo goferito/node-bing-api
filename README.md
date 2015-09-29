@@ -35,7 +35,7 @@ Bing.web("Pizza", {
 #### Composite Search:
 ```js
 Bing.composite("xbox", {
-    top: 10,  // Number of results (max 50)
+    top: 10,  // Number of results (max 15 for news, max 50 if other)
     skip: 3,   // Skip first 3 results
     sources: "web+news", //Choises are web+image+video+news+spell
     newssortby: "Date" //Choices are Date, Relevance
@@ -47,7 +47,7 @@ Bing.composite("xbox", {
 #### News Search:
 ```js
 Bing.news("xbox", {
-    top: 10,  // Number of results (max 50)
+    top: 10,  // Number of results (max 15)
     skip: 3,   // Skip first 3 results
     newssortby: "Date", //Choices are: Date, Relevance
     newscategory: "rt_Business" // Choices are:
@@ -129,3 +129,4 @@ or videos, but may include sexually explicit text.*
 
 ## License
 MIT
+

@@ -115,7 +115,6 @@ describe("Bing News", function () {
 
     Bing.news('ps4',
               {
-                top: 10,
                 skip: 1,
                 newsortby: 'Date'
               },
@@ -127,7 +126,7 @@ describe("Bing News", function () {
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(10);
+      body.d.results.should.have.length(15);
 
       done();
     });

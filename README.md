@@ -70,7 +70,7 @@ Bing.news("xbox", {
 Bing.video("monkey vs frog", {
     top: 10,  // Number of results (max 50)
     skip: 3,   // Skip first 3 result
-    videofilters: {
+    videoFilters: {
       duration: 'short',
       resolution: 'high'
     },
@@ -91,7 +91,7 @@ Bing.images("Ninja Turtles", {skip: 50}, function(error, res, body){
 Adding filter(s) for the Image Search
 ```js
 Bing.images("Ninja Turtles", {
-    imagefilters: {
+    imageFilters: {
       size: 'small',
       color: 'monochrome'
     }

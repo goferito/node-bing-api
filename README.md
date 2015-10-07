@@ -38,7 +38,7 @@ Bing.composite("xbox", {
     top: 10,  // Number of results (max 15 for news, max 50 if other)
     skip: 3,   // Skip first 3 results
     sources: "web+news", //Choises are web+image+video+news+spell
-    newssortby: "Date" //Choices are Date, Relevance
+    newsSortBy: "Date" //Choices are Date, Relevance
   }, function(error, res, body){
     console.log(body);
   });
@@ -49,8 +49,8 @@ Bing.composite("xbox", {
 Bing.news("xbox", {
     top: 10,  // Number of results (max 15)
     skip: 3,   // Skip first 3 results
-    newssortby: "Date", //Choices are: Date, Relevance
-    newscategory: "rt_Business" // Choices are:
+    newsSortBy: "Date", //Choices are: Date, Relevance
+    newsCategory: "rt_Business" // Choices are:
                                 //   rt_Business
                                 //   rt_Entertainment
                                 //   rt_Health
@@ -59,6 +59,7 @@ Bing.news("xbox", {
                                 //   rt_US
                                 //   rt_World
                                 //   rt_ScienceAndTechnology
+    newsLocationOverride: "US.WA" // Only for en-US market
   }, function(error, res, body){
     console.log(body);
   });

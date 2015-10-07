@@ -87,7 +87,7 @@ describe("Bing Images", function () {
                 {
                   top: 3,
                   adult: 'Off',
-                  imagefilters: {
+                  imageFilters: {
                     size: 'small',
                     color: 'monochrome'
                   }
@@ -116,11 +116,11 @@ describe("Bing News", function () {
     Bing.news('ps4',
               {
                 skip: 1,
-                newsortby: 'Date'
+                newSortBy: 'Date'
               },
               function (err, res, body) {
 
-      //TODO try unaccepted options like imagefilters
+      //TODO try unaccepted options like imageFilters
 
       should.not.exist(err);
       should.exist(res);
@@ -144,7 +144,7 @@ describe("Bing Video", function () {
     Bing.video('monkey vs frog',
                {
                  top: 10,
-                 videofilters: {
+                 videoFilters: {
                    duration: 'short',
                    resolution: 'high'
                  },
@@ -158,7 +158,7 @@ describe("Bing Video", function () {
 
       body.d.results.should.have.length(10);
 
-      //TODO try here unaccepted options like imagefilters
+      //TODO try here unaccepted options like imageFilters
 
       done();
     });

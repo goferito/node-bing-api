@@ -147,7 +147,8 @@ describe("Bing Video", function () {
                  videofilters: {
                    duration: 'short',
                    resolution: 'high'
-                 }
+                 },
+                 videoSortBy: 'Date'
                },
                function (err, res, body) {
 

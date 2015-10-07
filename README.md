@@ -72,7 +72,10 @@ Bing.video("monkey vs frog", {
     videofilters: {
       duration: 'short',
       resolution: 'high'
-    }
+    },
+    videoSortBy: 'Date' // Choices are:
+                        //   Date
+                        //   Relevance
   }, function(error, res, body){
     console.log(body);
   });

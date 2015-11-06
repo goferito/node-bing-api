@@ -108,6 +108,20 @@ Accepted filter values:
 * Style:\<Photo | Graphics\>
 * Face:\<Face | Portrait | Other\>
 
+#### Related Search:
+```js
+Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
+  var suggestions = body.d.results.map(function(r){ return r.Title});
+  console.log(suggestions.join('\n'));
+});
+```
+
+#### Spelling Suggestions:
+```js
+Bing.spellingSuggestion('awsome spell', function (err, res, body) {
+  console.log(body.d.results[0]); //awesome spell
+});
+```
 
 #### Specify Market
 Getting spanish results:

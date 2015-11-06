@@ -165,3 +165,48 @@ describe("Bing Video", function () {
   });
 });
 
+
+describe("Bing Related Search", function () {
+
+  this.timeout(1000 * 10);
+
+  it('finds related search suggestions', function (done) {
+
+    Bing.relatedSearch('berlin',
+               { top: 5, market: 'en-US' },
+               function (err, res, body) {
+
+      should.not.exist(err);
+      should.exist(res);
+      should.exist(body);
+
+      body.d.results.should.have.length(5);
+
+      done();
+    });
+  });
+});
+
+
+describe("Bing Spelling Suggestion", function () {
+
+  this.timeout(1000 * 10);
+
+  it('finds proper spelling', function (done) {
+
+    Bing.spelling('awsome spell',
+                  function (err, res, body) {
+
+      should.not.exist(err);
+      should.exist(res);
+      should.exist(body);
+
+      // Find at leas one suggestion
+      body.d.results.length.should.be.aboveOrEqual(1);
+      body.d.results[0].Value.should.equal("awesome spell");
+
+      done();
+    });
+  });
+});
+

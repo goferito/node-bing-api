@@ -118,7 +118,7 @@ Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
 
 #### Spelling Suggestions:
 ```js
-Bing.spellingSuggestion('awsome spell', function (err, res, body) {
+Bing.spelling('awsome spell', function (err, res, body) {
   console.log(body.d.results[0]); //awesome spell
 });
 ```

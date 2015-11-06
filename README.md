@@ -111,7 +111,7 @@ Accepted filter values:
 #### Related Search:
 ```js
 Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
-  var suggestions = body.d.results.map(function(r){ return r.Title});
+  var suggestions = body.d.results.map(function(r){ return r.Title; });
   console.log(suggestions.join('\n'));
 });
 ```

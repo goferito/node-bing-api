@@ -126,7 +126,10 @@ Bing.spelling('awsome spell', function (err, res, body) {
 #### Specify Market
 Getting spanish results:
 ```js
-Bing.images("Ninja Turtles", {top: 5, market: 'es-ES'}, function(error, res, body){
+Bing.images("Ninja Turtles"
+          , {top: 5, market: 'es-ES'}
+          , function(error, res, body){
+
   console.log(body);
 });
 ```
@@ -135,7 +138,10 @@ Bing.images("Ninja Turtles", {top: 5, market: 'es-ES'}, function(error, res, bod
 
 #### Adult Filter
 ```js
-Bing.images('Kim Kardashian', {market: 'en-US', adult: 'Strict'}, function(error, res, body){
+Bing.images('Kim Kardashian'
+          , {market: 'en-US', adult: 'Strict'}
+          , function(error, res, body){
+
   console.log(body.d.results);
 });
 ```
@@ -143,6 +149,13 @@ Accepted values: "Off", "Moderate", "Strict".
 
 *Moderate level should not include results with sexually explicit images
 or videos, but may include sexually explicit text.*
+
+
+## Running Tests
+In order to run the tests, the integration tests require to create a `secrets.js` file
+from the provided `secrets.js.example` example, and fill it in with a valid access key.
+
+Then just `mocha`.
 
 
 ## License

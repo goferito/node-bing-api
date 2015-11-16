@@ -17,13 +17,13 @@ var Bing = require('../')({ accKey: accKey })
   , should = require('should')
 
 
-describe("Bing Search", function () {
+describe("Bing Web", function () {
 
   this.timeout(1000 * 10);
 
   it('works without options', function (done) {
 
-    Bing.search('monkey vs frog', function (err, res, body) {
+    Bing.web('monkey vs frog', function (err, res, body) {
 
       should.not.exist(err);
       should.exist(res);
@@ -37,7 +37,7 @@ describe("Bing Search", function () {
   });
 
   it('finds only 5 results', function (done) {
-    Bing.search('monkey vs frog',
+    Bing.web('monkey vs frog',
                 {
                   top: 5,
                   market: 'en-US',
@@ -56,7 +56,7 @@ describe("Bing Search", function () {
   });
 
   it('finds ukrainian results', function(done){
-    Bing.search('"Sony Xperia Z3" огляди тест',
+    Bing.web('"Sony Xperia Z3" огляди тест',
                 {
                   top: 5,
                   skip: 0,

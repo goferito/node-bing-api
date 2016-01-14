@@ -151,11 +151,13 @@ Accepted values: "Off", "Moderate", "Strict".
 or videos, but may include sexually explicit text.*
 
 #### Web Only API Subscriptions
-
-To use this library with a web only subscription require and initialize it with this root uri:
-
+To use this library with a web only subscription, you can require and initialize it with an alternate root url:
 ```js
-var Bing = require('node-bing-api')({ accKey: "your-account-key", rootUri: "https://api.datamarket.azure.com/Bing/SearchWeb/v1/" });
+var Bing = require('node-bing-api')
+            ({ 
+              accKey: "your-account-key", 
+              rootUri: "https://api.datamarket.azure.com/Bing/SearchWeb/v1/" 
+            });
 ```
 
 ## Running Tests

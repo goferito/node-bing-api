@@ -150,6 +150,13 @@ Accepted values: "Off", "Moderate", "Strict".
 *Moderate level should not include results with sexually explicit images
 or videos, but may include sexually explicit text.*
 
+#### Web Only API Subscriptions
+
+To use this library with a web only subscription require and initialize it with this root uri:
+
+```js
+var Bing = require('node-bing-api')({ accKey: "your-account-key", rootUri: "https://api.datamarket.azure.com/Bing/SearchWeb/v1/" });
+```
 
 ## Running Tests
 In order to run the tests, the integration tests require to create a `secrets.js` file

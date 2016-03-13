@@ -41,7 +41,8 @@ describe("Bing Web", function () {
                 {
                   top: 5,
                   market: 'en-US',
-                  adult: 'Strict'
+                  adult: 'Strict',
+                  options: ['DisableLocationDetection', 'EnableHighlighting']
                 },
                 function (err, res, body) {
 

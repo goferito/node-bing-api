@@ -23,6 +23,7 @@ var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 Bing.web("Pizza", {
     top: 10,  // Number of results (max 50)
     skip: 3,   // Skip first 3 results
+    options: ['DisableLocationDetection', 'EnableHighlighting']
   }, function(error, res, body){
 
     // body has more useful information, but for this example we are just

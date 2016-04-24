@@ -136,6 +136,35 @@ describe("Bing News", function () {
 });
 
 
+describe("Bing Composite", function () {
+
+  this.timeout(1000 * 10);
+
+  it('finds composite search', function (done) {
+
+    Bing.composite('animal',
+              {
+                sources: 'web+news',
+                skip: 1,
+                newSortBy: 'Date'
+              },
+              function (err, res, body) {
+
+      //TODO try unaccepted options like imageFilters
+
+      should.not.exist(err);
+      should.exist(res);
+      should.exist(body);
+
+      body.d.results.should.have.length(1);
+
+      done();
+    });
+  });
+
+});
+
+
 describe("Bing Video", function () {
 
   this.timeout(1000 * 10);

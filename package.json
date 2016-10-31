@@ -1,6 +1,6 @@
 {
   "name": "node-bing-api",
-  "version": "2.4.1",
+  "version": "3.0.0",
   "description": "Node.js module for the Azure Bing Search API",
   "main": "index.js",
   "author": "Mr. Goferito",

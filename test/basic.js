@@ -59,7 +59,7 @@ describe('Bing', function () {
 
   it('should cope with valid responses', function (done) {
 
-    app.get('/hello/Web', function (req, res) {
+    app.get('/hello/search', function (req, res) {
       res.status(200).send(JSON.stringify(validWebResponse));
     });
 
@@ -82,10 +82,10 @@ describe('Bing', function () {
       message: 'Failed request'
     };
 
-    app.get('/hello/Image', function (req, res) {
+    app.get('/hello/images/search', function (req, res) {
       res.status(500).send(failure);
     });
-    
+
     var bingClient = bing({
       rootUri: 'http://localhost:' + port + '/hello/',
       accKey: '123'

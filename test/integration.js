@@ -28,8 +28,7 @@ describe("Bing Web", function () {
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
-
-      body.d.results.should.have.length(50);
+      body.webPages.value.should.have.length(50);
 
       //TODO check it contains the right fields
       done();
@@ -41,8 +40,7 @@ describe("Bing Web", function () {
                 {
                   top: 5,
                   market: 'en-US',
-                  adult: 'Strict',
-                  options: ['DisableLocationDetection', 'EnableHighlighting']
+                  adult: 'Strict'
                 },
                 function (err, res, body) {
 
@@ -50,18 +48,18 @@ describe("Bing Web", function () {
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(5);
+      body.webPages.value.should.have.length(5);
 
       done();
     });
   });
 
-  it('finds ukrainian results', function(done){
-    Bing.web('"Sony Xperia Z3" огляди тест',
+  it('finds russian results', function(done){
+    Bing.web('"Sony Xperia Z3" смартфон',
                 {
                   top: 5,
                   skip: 0,
-                  market: 'uk-UA'
+                  market: 'ru-RU'
                 },
                 function (err, res, body) {
 
@@ -69,11 +67,11 @@ describe("Bing Web", function () {
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(5);
+      body.webPages.value.should.have.length(5);
 
       done();
     });
-    
+
   })
 
 });
@@ -87,19 +85,14 @@ describe("Bing Images", function () {
     Bing.images('pizza',
                 {
                   top: 3,
-                  adult: 'Off',
-                  imageFilters: {
-                    size: 'small',
-                    color: 'monochrome'
-                  }
+                  adult: 'Off'
                 },
                 function (err, res, body) {
 
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
-
-      body.d.results.should.have.length(3);
+      body.value.should.have.length(3);
 
       done();
     });
@@ -114,10 +107,9 @@ describe("Bing News", function () {
 
   it('finds news with specific options', function (done) {
 
-    Bing.news('ps4',
+    Bing.news('microsoft',
               {
-                skip: 1,
-                newSortBy: 'Date'
+                top: 5
               },
               function (err, res, body) {
 
@@ -127,7 +119,7 @@ describe("Bing News", function () {
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(15);
+      body.value.should.be.instanceof(Array);
 
       done();
     });
@@ -144,9 +136,7 @@ describe("Bing Composite", function () {
 
     Bing.composite('animal',
               {
-                sources: 'web+news',
-                skip: 1,
-                newSortBy: 'Date'
+                top: 1,
               },
               function (err, res, body) {
 
@@ -156,7 +146,7 @@ describe("Bing Composite", function () {
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(1);
+      body.webPages.value.should.have.length(1);
 
       done();
     });
@@ -173,12 +163,7 @@ describe("Bing Video", function () {
 
     Bing.video('monkey vs frog',
                {
-                 top: 10,
-                 videoFilters: {
-                   duration: 'short',
-                   resolution: 'high'
-                 },
-                 videoSortBy: 'Date'
+                 top: 10
                },
                function (err, res, body) {
 
@@ -186,7 +171,7 @@ describe("Bing Video", function () {
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(10);
+      body.value.should.have.length(10);
 
       //TODO try here unaccepted options like imageFilters
 
@@ -203,14 +188,17 @@ describe("Bing Related Search", function () {
   it('finds related search suggestions', function (done) {
 
     Bing.relatedSearch('berlin',
-               { top: 5, market: 'en-US' },
+                {
+                  top: 5,
+                  market: 'en-US'
+                },
                function (err, res, body) {
 
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
 
-      body.d.results.should.have.length(5);
+      body.webPages.value.should.have.length(5);
 
       done();
     });
@@ -232,11 +220,10 @@ describe("Bing Spelling Suggestion", function () {
       should.exist(body);
 
       // Find at leas one suggestion
-      body.d.results.length.should.be.aboveOrEqual(1);
-      body.d.results[0].Value.should.equal("awesome spell");
+      body.flaggedTokens.suggestions.length.should.be.aboveOrEqual(1);
+      body.flaggedTokens.suggestions[0].suggestion.should.equal("awesome spell");
 
       done();
     });
   });
 });
-

@@ -2,7 +2,7 @@
 Node.js lib for the Azure Bing Web Search API
 
 ## Changelog v3
-Thanks to the contribution of @franciscofsales, version 3 supports the
+Thanks to the contribution of [@franciscofsales](https://github.com/franciscofsales), version 3 supports the
 new API (Cognitive Services). This version is not compatible with the
 Azure version, so if you are still using an Azure access key, please
 stay with v2.
@@ -18,21 +18,24 @@ npm install node-bing-api
 
 ## Usage
 
-Require the library and initialialize it with your account key:
+Require the library and initialize it with your account key:
 
 ```js
 var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 ```
 
 #### Web Search (same as Composite):
+
 ```js
 Bing.web("Pizza", {
     top: 10,  // Number of results (max 50)
     skip: 3   // Skip first 3 results
   }, function(error, res, body){
 
-    // body has more useful information, but for this example we are just
-    // printing the first two results
+    // body has more useful information besides web pages
+    // (image search, related search, news, videos)
+    // but for this example we are just
+    // printing the first two web page results
     console.log(body.webPages.value[0]);
     console.log(body.webPages.value[1]);
   });
@@ -44,7 +47,7 @@ Bing.composite("xbox", {
     top: 10,  // Number of results (max 15 for news, max 50 if other)
     skip: 3   // Skip first 3 results
   }, function(error, res, body){
-    console.log(body);
+    console.log(body.news);
   });
 ```
 
@@ -70,14 +73,9 @@ Bing.video("monkey vs frog", {
 
 #### Images Search:
 ```js
-Bing.images("Ninja Turtles", {skip: 50}, function(error, res, body){
-  console.log(body);
-});
-```
-Adding filter(s) for the Image Search
-```js
 Bing.images("Ninja Turtles", {
-    top: 5  // Number of results (max 50)
+  top: 15,   // Number of results (max 50)
+  skip: 3    // Skip first 3 result
   }, function(error, res, body){
     console.log(body);
   });
@@ -86,7 +84,7 @@ Bing.images("Ninja Turtles", {
 #### Related Search (same as Web):
 ```js
 Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
-  var suggestions = body.relatedSearches.value.map(function(r){ return r.Title; });
+  var suggestions = body.relatedSearches.value.map(function(r){ return r.displayText; });
   console.log(suggestions.join('\n'));
 });
 ```
@@ -115,7 +113,12 @@ Bing.images("Ninja Turtles"
   console.log(body);
 });
 ```
-[List of Bing Markets](https://msdn.microsoft.com/en-us/library/dd251064.aspx)
+
+Full list of supported markets:
+es-AR,en-AU,de-AT,nl-BE,fr-BE,pt-BR,en-CA,fr-CA,es-CL,da-DK,fi-FI,fr-FR,
+de-DE,zh-HK,en-IN,en-ID,en-IE,it-IT,ja-JP,ko-KR,en-MY,es-MX,nl-NL,en-NZ,
+no-NO,zh-CN,pl-PL,pt-PT,en-PH,ru-RU,ar-SA,en-ZA,es-ES,sv-SE,fr-CH,de-CH,
+zh-TW,tr-TR,en-GB,en-US,es-US
 
 
 #### Adult Filter
@@ -124,7 +127,7 @@ Bing.images('Kim Kardashian'
           , {market: 'en-US', adult: 'Strict'}
           , function(error, res, body){
 
-  console.log(body.d.results);
+  console.log(body.value);
 });
 ```
 Accepted values: "Off", "Moderate", "Strict".

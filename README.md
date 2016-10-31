@@ -18,7 +18,7 @@ Require the library and initialialize it with your account key:
 var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 ```
 
-#### Web Search:
+#### Web Search (same as Composite):
 ```js
 Bing.web("Pizza", {
     top: 10,  // Number of results (max 50)
@@ -32,7 +32,7 @@ Bing.web("Pizza", {
   });
 ```
 
-#### Composite Search:
+#### Composite Search (same as Web):
 ```js
 Bing.composite("xbox", {
     top: 10,  // Number of results (max 15 for news, max 50 if other)
@@ -77,7 +77,7 @@ Bing.images("Ninja Turtles", {
   });
 ```
 
-#### Related Search:
+#### Related Search (same as Web):
 ```js
 Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
   var suggestions = body.relatedSearches.value.map(function(r){ return r.Title; });

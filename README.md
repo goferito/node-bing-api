@@ -18,28 +18,25 @@ Require the library and initialialize it with your account key:
 var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 ```
 
-#### Web Search:
+#### Web Search (same as Composite):
 ```js
 Bing.web("Pizza", {
     top: 10,  // Number of results (max 50)
-    skip: 3,   // Skip first 3 results
-    options: ['DisableLocationDetection', 'EnableHighlighting']
+    skip: 3   // Skip first 3 results
   }, function(error, res, body){
 
     // body has more useful information, but for this example we are just
     // printing the first two results
-    console.log(body.d.results[0]);
-    console.log(body.d.results[1]);
+    console.log(body.webPages.value[0]);
+    console.log(body.webPages.value[1]);
   });
 ```
 
-#### Composite Search:
+#### Composite Search (same as Web):
 ```js
 Bing.composite("xbox", {
     top: 10,  // Number of results (max 15 for news, max 50 if other)
-    skip: 3,   // Skip first 3 results
-    sources: "web+news", //Choises are web+image+video+news+spell
-    newsSortBy: "Date" //Choices are Date, Relevance
+    skip: 3   // Skip first 3 results
   }, function(error, res, body){
     console.log(body);
   });
@@ -49,18 +46,7 @@ Bing.composite("xbox", {
 ```js
 Bing.news("xbox", {
     top: 10,  // Number of results (max 15)
-    skip: 3,   // Skip first 3 results
-    newsSortBy: "Date", //Choices are: Date, Relevance
-    newsCategory: "rt_Business" // Choices are:
-                                //   rt_Business
-                                //   rt_Entertainment
-                                //   rt_Health
-                                //   rt_Politics
-                                //   rt_Sports
-                                //   rt_US
-                                //   rt_World
-                                //   rt_ScienceAndTechnology
-    newsLocationOverride: "US.WA" // Only for en-US market
+    skip: 3   // Skip first 3 results
   }, function(error, res, body){
     console.log(body);
   });
@@ -70,14 +56,7 @@ Bing.news("xbox", {
 ```js
 Bing.video("monkey vs frog", {
     top: 10,  // Number of results (max 50)
-    skip: 3,   // Skip first 3 result
-    videoFilters: {
-      duration: 'short',
-      resolution: 'high'
-    },
-    videoSortBy: 'Date' // Choices are:
-                        //   Date
-                        //   Relevance
+    skip: 3   // Skip first 3 result
   }, function(error, res, body){
     console.log(body);
   });
@@ -92,27 +71,16 @@ Bing.images("Ninja Turtles", {skip: 50}, function(error, res, body){
 Adding filter(s) for the Image Search
 ```js
 Bing.images("Ninja Turtles", {
-    imageFilters: {
-      size: 'small',
-      color: 'monochrome'
-    }
+    top: 5  // Number of results (max 50)
   }, function(error, res, body){
-  console.log(body);
+    console.log(body);
   });
 ```
-Accepted filter values:
-* Size:\<Small | Medium | Large\>
-* Size:Height:\<*Height*\>
-* Size:Width:\<*Width*\>
-* Aspect:\<Square | Wide | Tall\>
-* Color:\<Color | Monochrome\>
-* Style:\<Photo | Graphics\>
-* Face:\<Face | Portrait | Other\>
 
-#### Related Search:
+#### Related Search (same as Web):
 ```js
 Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
-  var suggestions = body.d.results.map(function(r){ return r.Title; });
+  var suggestions = body.relatedSearches.value.map(function(r){ return r.Title; });
   console.log(suggestions.join('\n'));
 });
 ```
@@ -120,9 +88,16 @@ Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
 #### Spelling Suggestions:
 ```js
 Bing.spelling('awsome spell', function (err, res, body) {
-  console.log(body.d.results[0]); //awesome spell
+  console.log(body.flaggedTokens.suggestions[0].suggestion); //awesome spell
 });
 ```
+
+Requires specific Account key
+
+Available Options:
+* mode:\<Proof | Spell\>
+* preContextText:\<*String*\>
+* postContextText:\<*String*\>
 
 #### Specify Market
 Getting spanish results:
@@ -155,9 +130,9 @@ or videos, but may include sexually explicit text.*
 To use this library with a web only subscription, you can require and initialize it with an alternate root url:
 ```js
 var Bing = require('node-bing-api')
-            ({ 
-              accKey: "your-account-key", 
-              rootUri: "https://api.datamarket.azure.com/Bing/SearchWeb/v1/" 
+            ({
+              accKey: "your-account-key",
+              rootUri: "https://api.datamarket.azure.com/Bing/SearchWeb/v1/"
             });
 ```
 
@@ -170,4 +145,3 @@ Then just `mocha`.
 
 ## License
 MIT
-

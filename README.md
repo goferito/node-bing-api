@@ -103,6 +103,11 @@ Available Options:
 * preContextText:\<*String*\>
 * postContextText:\<*String*\>
 
+### request() options
+
+* maxSockets: integer (default: Infinity)
+* reqTimeout: ms
+  
 #### Specify Market
 Getting spanish results:
 ```js

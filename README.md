@@ -25,8 +25,8 @@ var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 
 ```js
 Bing.web("Pizza", {
-    top: 10,  // Number of results (max 50)
-    skip: 3   // Skip first 3 results
+    count: 10,  // Number of results (max 50)
+    offset: 3   // Skip first 3 results
   }, function(error, res, body){
 
     // body has more useful information besides web pages
@@ -40,9 +40,9 @@ Bing.web("Pizza", {
 
 #### Composite Search (same as Web):
 ```js
-Bing.composite("xbox", {
-    top: 10,  // Number of results (max 15 for news, max 50 if other)
-    skip: 3   // Skip first 3 results
+Bing.composite("Playstation 4 Pro", {
+    count: 10,  // Number of results (max 15 for news, max 50 if other)
+    offset: 3   // Skip first 3 results
   }, function(error, res, body){
     console.log(body.news);
   });
@@ -50,9 +50,9 @@ Bing.composite("xbox", {
 
 #### News Search:
 ```js
-Bing.news("xbox", {
-    top: 10,  // Number of results (max 15)
-    skip: 3   // Skip first 3 results
+Bing.news("Anonymous", {
+    count: 10,  // Number of results (max 15)
+    offset: 3   // Skip first 3 results
   }, function(error, res, body){
     console.log(body);
   });
@@ -61,8 +61,8 @@ Bing.news("xbox", {
 #### Video Search:
 ```js
 Bing.video("monkey vs frog", {
-    top: 10,  // Number of results (max 50)
-    skip: 3   // Skip first 3 result
+    count: 10,  // Number of results (max 50)
+    offset: 3   // Skip first 3 result
   }, function(error, res, body){
     console.log(body);
   });
@@ -71,8 +71,8 @@ Bing.video("monkey vs frog", {
 #### Images Search:
 ```js
 Bing.images("Ninja Turtles", {
-  top: 15,   // Number of results (max 50)
-  skip: 3    // Skip first 3 result
+  count: 15,   // Number of results (max 50)
+  offset: 3    // Skip first 3 result
   }, function(error, res, body){
     console.log(body);
   });
@@ -80,10 +80,12 @@ Bing.images("Ninja Turtles", {
 
 #### Related Search (same as Web):
 ```js
-Bing.relatedSearch('berlin', {market: 'en-US'}, function (err, res, body) {
-  var suggestions = body.relatedSearches.value.map(function(r){ return r.displayText; });
-  console.log(suggestions.join('\n'));
-});
+Bing.relatedSearch('berlin'
+, { market: 'en-US' }
+, (err, res, body) => {
+    const suggestions = body.relatedSearches.value.map(r => r.displayText)
+    console.log(suggestions.join('\n'))
+  })
 ```
 
 #### Spelling Suggestions:
@@ -109,7 +111,7 @@ Available Options:
 Getting spanish results:
 ```js
 Bing.images("Ninja Turtles"
-          , {top: 5, market: 'es-ES'}
+          , {count: 5, market: 'es-ES'}
           , function(error, res, body){
 
   console.log(body);

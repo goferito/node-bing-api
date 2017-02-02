@@ -1,11 +1,8 @@
 # Node Bing API
-Node.js lib for the Azure Bing Web Search API
+Node.js lib for the Microsoft Cognitive Services Bing Web Search API
 
 ## Changelog v3
-Thanks to the contribution of [@franciscofsales](https://github.com/franciscofsales), version 3 supports the
-new API (Cognitive Services). This version is not compatible with the
-Azure version, so if you are still using an Azure access key, please
-stay with v2.
+Thanks to the contribution of [@franciscofsales](https://github.com/franciscofsales), version 3 supports the new API (Cognitive Services).
 
 ## Changelog v2
 In order to follow JavaScript best practices and allow the library to

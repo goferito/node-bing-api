@@ -23,19 +23,19 @@ describe("Bing Web", function () {
 
   it('works without options', function (done) {
 
-    Bing.web('monkey vs frog', function (err, res, body) {
+    Bing.web('pizza', function (err, res, body) {
 
       should.not.exist(err);
       should.exist(res);
       should.exist(body);
-      body.webPages.value.should.have.length(50);
+      body.webPages.value.length.should.be.above(0);
 
       //TODO check it contains the right fields
       done();
     });
   });
 
-  it('finds only 5 results', function (done) {
+  it('finds only 5 results with old "top" option', function (done) {
     Bing.web('monkey vs frog',
                 {
                   top: 5,
@@ -57,7 +57,7 @@ describe("Bing Web", function () {
   it('finds russian results', function(done){
     Bing.web('"Sony Xperia Z3" смартфон',
                 {
-                  top: 5,
+                  count: 5,
                   skip: 0,
                   market: 'ru-RU'
                 },
@@ -205,25 +205,3 @@ describe("Bing Related Search", function () {
   });
 });
 
-
-describe("Bing Spelling Suggestion", function () {
-
-  this.timeout(1000 * 10);
-
-  it('finds proper spelling', function (done) {
-
-    Bing.spelling('awsome spell',
-                  function (err, res, body) {
-
-      should.not.exist(err);
-      should.exist(res);
-      should.exist(body);
-
-      // Find at leas one suggestion
-      body.flaggedTokens.suggestions.length.should.be.aboveOrEqual(1);
-      body.flaggedTokens.suggestions[0].suggestion.should.equal("awesome spell");
-
-      done();
-    });
-  });
-});

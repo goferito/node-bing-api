@@ -1,6 +1,6 @@
 {
   "name": "node-bing-api",
-  "version": "3.1.1",
+  "version": "3.2.1",
   "description": "Node.js module for the Cognitive Services Bing Search API",
   "main": "index.js",
   "author": "Mr. Goferito",

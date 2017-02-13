@@ -155,6 +155,7 @@ from the provided `secrets.js.example` example, and fill it in with a valid acce
 
 Then just `mocha`.
 
+Test on [RapidAPI](https://rapidapi.com/package/BingSearch?utm_source=BingGitHub&utm_medium=button)
 
 ## License
 MIT

@@ -1,4 +1,6 @@
 [![NPM downloads per month][npm-downloads-img]][npm-url]
+[![NPM version][npm-version-img]][npm-url]
+[![NPM license][npm-license-img]][npm-url]
 
 # Node Bing API
 Node.js lib for the Microsoft Cognitive Services Bing Web Search API
@@ -161,5 +163,7 @@ Then just `mocha`.
 ## License
 MIT
 
-
+[npm-url]: https://npmjs.org/package/node-bing-api
 [npm-downloads-img]: https://img.shields.io/npm/dm/node-bing-api.svg
+[npm-version-img]: https://badge.fury.io/js/node-bing-api.svg
+[npm-license-img]: https://img.shields.io/npm/l/node-bing-api.svg

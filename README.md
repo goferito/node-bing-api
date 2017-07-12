@@ -25,6 +25,16 @@ Require the library and initialize it with your account key:
 var Bing = require('node-bing-api')({ accKey: "your-account-key" });
 ```
 
+## Promises
+
+This API provdes callbacks by default, but users of node 8 and newer can make th library return Promises with `util.promisify()`. For example, to use `Bing.web`:
+
+```js
+var util = require('util'),
+  Bing = require('node-bing-api')({ accKey: 'someKey' }),
+  searchBing = util.promisify(Bing.web.bind(Bing));
+```
+
 #### Web Search (same as Composite):
 
 ```js

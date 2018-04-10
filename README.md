@@ -5,6 +5,9 @@
 # Node Bing API
 Node.js lib for the Microsoft Cognitive Services Bing Web Search API
 
+## Changelog v4
+Use Cognitive V7. Apparently new registrations can use that version only. Upgrade with care!
+
 ## Changelog v3
 Thanks to the contribution of [@franciscofsales](https://github.com/franciscofsales), version 3 supports the new API (Cognitive Services).
 
@@ -120,7 +123,7 @@ Available Options:
 
 * maxSockets: integer (default: Infinity)
 * reqTimeout: ms
-  
+
 #### Specify Market
 Getting spanish results:
 ```js

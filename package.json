@@ -1,6 +1,6 @@
 {
   "name": "node-bing-api",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Node.js module for the Cognitive Services Bing Search API",
   "main": "index.js",
   "author": "Mr. Goferito",
@@ -25,5 +25,12 @@
     "grunt-simple-mocha": "^0.4.0",
     "mocha": "^1.21.4",
     "should": "^7.1.1"
-  }
+  },
+  "keywords": [
+    "bing",
+    "api",
+    "bing-api",
+    "search",
+    "cognitive"
+  ]
 }
